@@ -4,9 +4,10 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
-        name="viewmodel"
-        type="com.clean.cut.githubapp.viewmodel.MainActivityViewModel"/>
+                name="viewmodel"
+                type="com.clean.cut.githubapp.viewmodel.MainActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:hint="Query..."
-                    android:text="@={viewmodel.queryText}"/>
+                    android:text="@={viewmodel.queryText}" />
 
             <Button
                     android:id="@+id/searchBtn"
@@ -37,36 +38,33 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Search"
-                    android:onClick="@{() -> viewmodel.getSearchData()}"/>
+                    android:onClick="@{() -> viewmodel.getSearchData()}"
+                    android:text="Search" />
 
 
         </LinearLayout>
 
-        <TextView
-                android:id="@+id/textTest"
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/githubRV"
                 style="@style/PrimaryColoredButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TEST"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                android:background="@android:color/background_light"/>
 
         <ProgressBar
                 android:id="@+id/searchProgress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="@{viewmodel.isLoading ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.265"
-                android:visibility="@{viewmodel.isLoading ? View.VISIBLE : View.GONE}"
-                />
+                app:layout_constraintVertical_bias="0.265" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

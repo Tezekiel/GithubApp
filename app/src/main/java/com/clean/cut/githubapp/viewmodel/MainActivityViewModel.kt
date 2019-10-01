@@ -1,5 +1,6 @@
 package com.clean.cut.githubapp.viewmodel
 
+import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,20 +12,22 @@ import kotlinx.coroutines.withContext
 
 class MainActivityViewModel : ViewModel() {
     private val repository: MainActivityRepository = MainActivityRepository()
-    val liveData = MutableLiveData<SearchResult>()
+    val liveDataQueryResult = MutableLiveData<SearchResult>()
+    val isLoading = MutableLiveData<Boolean>()
 
     var queryText = ""
-    var isLoading = false
+
+    //var isLoading = false
 
     fun getSearchData(){
         if(queryText.isNotEmpty()) {
-            isLoading = true
+            isLoading.value = true
             viewModelScope.launch {
                 val searchData = withContext(Dispatchers.IO) {
                     repository.searchGithub(queryText)
                 }
-                isLoading = false
-                liveData.value = searchData
+                isLoading.value = false
+                liveDataQueryResult.value = searchData
             }
         }
     }
