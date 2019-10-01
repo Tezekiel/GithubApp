@@ -17,29 +17,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        searchBtn.setOnClickListener { v -> searchGithub("tetris") }
+        searchBtn.setOnClickListener {searchGithub("tetris") }
     }
 
     private fun searchGithub(query: String) {
         // Launch Kotlin Coroutine on Android's main thread
         GlobalScope.launch(Dispatchers.IO) {
             val webResponse = WebAccess.githubApi.searchQuery(query)
-            Log.v("primjer", "ovdje")
-            Log.v("primjer", webResponse)
+            Log.v("primjer", webResponse.items[0].owner.login)
 
-           /* if (webResponse) {
-
-                //val responseObject: List<ResponseLogin>? = webResponse.body()
-                val responseObject: String? = webResponse.toString() //za debugg
-                Log.v("primjer", responseObject)
-
-                //TODO if ok start activity
-                //startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-
-            } else {
-                Log.d("primjer", "Error $webResponse")
-                //Toast.makeText(this@MainActivity, "Error ${webResponse.code()}", Toast.LENGTH_SHORT).show()
-            }*/
         }
     }
 }

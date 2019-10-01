@@ -12,13 +12,11 @@ object WebAccess {
 
             .baseUrl("https://api.github.com/search/")
             // Moshi maps JSON to classes
-            //.addConverterFactory(MoshiConverterFactory.create().asLenient())//TODO as lenient dodan
-            .addConverterFactory(ScalarsConverterFactory.create()) // za debugging
-            // The call adapter handles threads
+            .addConverterFactory(MoshiConverterFactory.create())//.asLenient())TODO as lenient dodan
+            //.addConverterFactory(ScalarsConverterFactory.create()) // za debugging
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
 
-        // Create Retrofit client
         return@lazy retrofit.create(GitHubApiClient::class.java)
     }
 }
