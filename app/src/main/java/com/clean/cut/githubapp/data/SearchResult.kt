@@ -20,29 +20,29 @@ data class Item(
     @Json(name = "id")
     val id: Int,
     @Json(name = "node_id")
-    val nodeId: String,
+    val nodeId: String?,
     @Json(name = "name")
-    val name: String,
+    val name: String?,
     @Json(name = "full_name")
-    val fullName: String,
+    val fullName: String?,
     @Json(name = "owner")
     val owner: Owner,
     @Json(name = "private")
     val private: Boolean,
     @Json(name = "html_url")
-    val htmlUrl: String,
+    val htmlUrl: String?,
     @Json(name = "description")
-    val description: String,
+    val description: String?,
     @Json(name = "fork")
     val fork: Boolean,
     @Json(name = "url")
-    val url: String,
+    val url: String?,
     @Json(name = "created_at")
-    val createdAt: String,
+    val createdAt: String?,
     @Json(name = "updated_at")
-    val updatedAt: String,
+    val updatedAt: String?,
     @Json(name = "pushed_at")
-    val pushedAt: String,
+    val pushedAt: String?,
     @Json(name = "homepage")
     val homepage: String?,
     @Json(name = "size")
@@ -58,9 +58,9 @@ data class Item(
     @Json(name = "open_issues_count")
     val openIssuesCount: Int,
    /* @Json(name = "master_branch")
-    val masterBranch: String,*/
+    val masterBranch: String?,*/
     @Json(name = "default_branch")
-    val defaultBranch: String,
+    val defaultBranch: String?,
     @Json(name = "score")
     val score: Double
 )
@@ -69,20 +69,20 @@ data class Item(
 data class Owner(
 
     @Json(name = "login")
-    val login: String,
+    val login: String?,
     @Json(name = "id")
     val id: Int,
     @Json(name = "node_id")
-    val nodeId: String,
+    val nodeId: String?,
     @Json(name = "avatar_url")
-    val avatarUrl: String,
+    val avatarUrl: String?,
     @Json(name = "gravatar_id")
-    val gravatarId: String,
+    val gravatarId: String?,
     @Json(name = "url")
-    val url: String,
+    val url: String?,
     @Json(name = "received_events_url")
-    val receivedEventsUrl: String,
+    val receivedEventsUrl: String?,
     @Json(name = "type")
-    val type: String
+    val type: String?
 
 )
