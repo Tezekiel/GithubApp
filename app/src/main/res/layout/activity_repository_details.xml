@@ -9,7 +9,7 @@
     <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
-            android:layout_height="400dp"
+            android:layout_height="250dp"
             android:orientation="vertical"
             android:weightSum="8"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
     <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="0dp"
-            android:layout_height="400dp"
+            android:layout_height="250dp"
             android:orientation="vertical"
             android:weightSum="8"
             app:layout_constraintEnd_toEndOf="parent"

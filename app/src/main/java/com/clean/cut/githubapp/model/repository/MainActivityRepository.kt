@@ -9,7 +9,6 @@ class MainActivityRepository{
     var client: GitHubApiClient = WebAccess.githubApi
 
     suspend fun searchGithub(search: String): SearchResult {
-        Log.v("primjer", "repos")
         return client.searchQuery(search)
     }
 

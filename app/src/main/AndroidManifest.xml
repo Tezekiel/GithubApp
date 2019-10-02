@@ -13,8 +13,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.RepositoryDetailsActivity"></activity>
-        <activity android:name=".ui.UserDetailsActivity"></activity>
+        <activity android:name=".ui.LoginActivity"></activity>
+        <activity android:name=".ui.RepositoryDetailsActivity" />
+        <activity android:name=".ui.UserDetailsActivity" />
         <activity
                 android:name=".ui.MainActivity"
                 android:windowSoftInputMode="adjustPan">

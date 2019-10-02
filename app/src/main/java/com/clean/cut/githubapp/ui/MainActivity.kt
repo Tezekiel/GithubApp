@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         githubRV.adapter = adapter
     }
 
-
     fun sortByUpdated(view: View) {
         listItems.sortByDescending {it.updatedAt}
         adapter.notifyDataSetChanged()
