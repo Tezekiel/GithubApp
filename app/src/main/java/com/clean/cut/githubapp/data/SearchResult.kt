@@ -2,6 +2,7 @@ package com.clean.cut.githubapp.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.io.Serializable
 
 @JsonClass(generateAdapter = true)
 data class SearchResult(
@@ -63,7 +64,7 @@ data class Item(
     val defaultBranch: String?,
     @Json(name = "score")
     val score: Double
-)
+) : Serializable
 
 @JsonClass(generateAdapter = true)
 data class Owner(
@@ -85,4 +86,4 @@ data class Owner(
     @Json(name = "type")
     val type: String?
 
-)
+): Serializable

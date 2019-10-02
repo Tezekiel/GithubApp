@@ -14,10 +14,7 @@ class MainActivityViewModel : ViewModel() {
     private val repository: MainActivityRepository = MainActivityRepository()
     val liveDataQueryResult = MutableLiveData<SearchResult>()
     val isLoading = MutableLiveData<Boolean>()
-
     var queryText = ""
-
-    //var isLoading = false
 
     fun getSearchData(){
         if(queryText.isNotEmpty()) {

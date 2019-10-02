@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="80dp"
         android:orientation="horizontal"
-        android:weightSum="8">
+        android:weightSum="10"
+        android:layout_marginBottom="4dp">
 
     <ImageView
             android:id="@+id/userImageIv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3" />
+            android:layout_weight="3"
+            android:transitionName="avatarTransition"/>
 
     <LinearLayout
             android:layout_width="0dp"
@@ -27,6 +29,28 @@
                 android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Watchers:"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forks:"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Issues:"/>
+
+    </LinearLayout>
+
     <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"

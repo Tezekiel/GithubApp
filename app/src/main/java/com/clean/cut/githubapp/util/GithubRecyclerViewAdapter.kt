@@ -1,11 +1,16 @@
 package com.clean.cut.githubapp.util
 
+import android.app.Activity
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.clean.cut.githubapp.R
 import com.clean.cut.githubapp.data.Item
+import com.clean.cut.githubapp.ui.RepositoryDetailsActivity
+import com.clean.cut.githubapp.ui.UserDetailsActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.github_rv_item.view.*
 
@@ -35,14 +40,32 @@ class GithubRecyclerViewAdapter(private val repoDetails: List<Item>) :
         }
 
         override fun onClick(v: View) {
-            Log.d("primjer", "CLICK!")
+            //start RepositoryDetails activity
+            val intent = Intent(v.context, RepositoryDetailsActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.putExtra("data", searchResult)
+            v.context.startActivity(intent)
         }
 
         fun bindResult(searchResult: Item) {
             this.searchResult = searchResult
             Picasso.with(view.context).load(searchResult.owner.avatarUrl).into(view.userImageIv)
-            view.repoNameTv.text = searchResult.fullName
+
+            //start userDetails activity
+            view.userImageIv.setOnClickListener {
+                val intent = Intent(view.userImageIv.context, UserDetailsActivity::class.java)
+                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(view.userImageIv.context as Activity,
+                    view.userImageIv, "avatarTransition").toBundle()
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                intent.putExtra("data", searchResult)
+                view.userImageIv.context.startActivity(intent, options)
+            }
+
+            view.repoNameTv.text = searchResult.name
             view.userNameTv.text = searchResult.owner.login
+            view.watchersTv.text = searchResult.watchersCount.toString()
+            view.forksTv.text = searchResult.forksCount.toString()
+            view.issuesTv.text = searchResult.openIssuesCount.toString()
         }
 
     }
